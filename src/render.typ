@@ -57,3 +57,19 @@
     draw-edge-label(from, to, edges.at(to), ..args2)
   })
 }
+
+#let list-tree(
+  body,
+  draw-edge: _default-draw-edge,
+  draw-edge-label: _default-draw-edge-label,
+  ..args,
+) = {
+  cetz.canvas({
+    tree-to-cetz(
+      list-to-tree(body),
+      draw-edge: draw-edge,
+      draw-edge-label: draw-edge-label,
+      ..args,
+    )
+  })
+}
