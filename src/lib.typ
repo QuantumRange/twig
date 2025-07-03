@@ -106,11 +106,14 @@
 }
 
 /// Given a tree in the following node format:
+/// ```
 /// (
 ///   node-label: content,
 ///   edge-label: content,
 ///   children: array (of nodes)
 /// )
+/// ```
+/// this function uses cetz.tree to draw a tree WITH edge labels.
 ///
 /// - rep (dictionary): the tree in the above specified format.
 /// - draw-edge (function): (from: cetz anchor, to: cetz anchor, ..args) draws the node using cetz.
