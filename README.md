@@ -66,11 +66,16 @@ To start using twig, just use the following code:
 })
 ```
 
-## TODOs
+## Roadmap
 
-- [ ] Add bounding boxes to prevent elements from intersecting  
+### Near future
+- [ ] Easy way to render quick
 - [ ] Simplify the syntax for empty nodes (currently `#[]`)
+- [ ] asserts
 
+### Maybe
+- [ ] Add bounding boxes to prevent elements from intersecting
+- [ ] Easier simple syling options
 
 ## Changelog
 
