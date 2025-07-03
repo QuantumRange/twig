@@ -6,7 +6,7 @@ Twig is a Typst package for easily creating trees with edge labels.
 It takes a list and converts it into a tree structure, then renders it using [cetz](https://typst.app/universe/package/cetz).  
 
 ```typ
-#import "@local/twig:0.1.0": list-to-tree, tree-to-cetz
+#import "@preview/twig:0.1.0": list-to-tree, tree-to-cetz
 #import "@preview/cetz:0.4.0"
 
 // suffix tree for "babidibidi"
