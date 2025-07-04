@@ -52,6 +52,10 @@
 
   let (nodes, edges) = _tree-to-cetz(rep)
 
+  if nodes.len() == 0 {
+    return
+  }
+
   tree.tree(nodes, ..args, draw-edge: (from, to, ..args2) => {
     draw-edge(from, to, ..args2)
     draw-edge-label(from, to, edges.at(to), ..args2)

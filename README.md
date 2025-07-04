@@ -66,18 +66,32 @@ To start using twig, just use the following code:
 })
 ```
 
+## Docs
+
+### `list-to-tree`
+
+### `tree-to-cetz`
+
+### `list-tree`
+
+
 ## Roadmap
 
-### Near future
-- [ ] Easy way to render quick
-- [ ] Simplify the syntax for empty nodes (currently `#[]`)
-- [ ] asserts
+This is the feature wishlist and we hope to make everything happen on here.
 
-### Maybe
-- [ ] Add bounding boxes to prevent elements from intersecting
+- [ ] Asserts
+- [ ] Allow empty labels everywhere (might be impossible :/)
 - [ ] Easier simple syling options
+- [ ] Add bounding boxes to prevent elements from intersecting
 
 ## Changelog
+
+### 0.2.0
+
+- added more documentation for every exposed function
+- added support for more empty states (`- `, `/ : `)
+- added more examples
+- fixed `/ edge: node`, so it can be used as root
 
 ### 0.1.0
 

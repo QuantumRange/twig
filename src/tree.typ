@@ -41,6 +41,14 @@
       node.children.filter(v => v.fields().len() != 0)
     }
 
+    if elements.len() == 0 {
+      return (
+        node-label: [],
+        edge-label: element.at("term", default: []),
+        children: (),
+      )
+    }
+
     let root = elements.first()
     let children = elements.slice(1).filter(v => v.has("body") or v.has("term"))
 
@@ -77,6 +85,10 @@
         })
         .join(),
     )
+  }
+
+  if tree.len() == 0 {
+    return ((), ())
   }
 
   helper("g0", tree)
