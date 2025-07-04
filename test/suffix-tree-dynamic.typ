@@ -1,5 +1,6 @@
-#import "../src/experimental.typ": *
-#import "../src/util.typ" as _util
+#import "../src/bb-tree/tree.typ": *
+#import "../src/bb-tree/cetz.typ" as _cetz
+#import "../src/bb-tree/bb.typ" as _bb
 
 // #cetz.canvas({
 //   import cetz.draw: *
@@ -19,8 +20,11 @@
   circle((2, 2))
 }
 
-#_util.cetz-execute(body).keys()
-// #_util.cetz-body-analyse(body)
+#let nodes = _cetz.body-analyse(body)
+// #nodes
+#for node in nodes {
+  _bb.visualize-bb(node)
+}
 
 // #cetz.canvas({
 //   import cetz.draw: *

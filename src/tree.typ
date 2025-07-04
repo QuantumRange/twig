@@ -62,7 +62,6 @@
   helper(firstItem)
 }
 
-
 #let _tree-to-cetz(tree) = {
   let helper(key, tree) = {
     let children = tree.children.enumerate().map(((idx, child)) => helper(key + "-" + str(idx), child))
