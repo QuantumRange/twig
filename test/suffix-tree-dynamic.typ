@@ -1,99 +1,125 @@
 #import "../src/experimental.typ": *
+#import "../src/util.typ" as _util
 
-#cetz.canvas({
+// #cetz.canvas({
+//   import cetz.draw: *
+
+//   content((), [
+//     #{
+
+//     }
+//   ])
+// })
+//
+
+#let body = {
   import cetz.draw: *
-  import cetz.vector: *
-  import cetz: *
 
-  let visu(elements) = {
-    get-ctx(ctx => {
-      // Process elements
-      ctx.groups.push(())
-      let (ctx: group-ctx, drawables, bounds) = process.many(ctx, util.resolve-body(ctx, elements))
+  line((1, 1), (3, 3))
+  circle((2, 2))
+}
 
-      // Calculate coordinates
-      let children = group-ctx.groups.last()
+#_util.cetz-execute(body).keys()
+// #_util.cetz-body-analyse(body)
 
-      let pos = children.map(child => {
-        let anchor = group-ctx.nodes.at(child).anchors
-        let keys = anchor(())
+// #cetz.canvas({
+//   import cetz.draw: *
+//   import cetz.vector: *
+//   import cetz: *
 
-        keys
-          .map(key => {
-            let coord = anchor(key)
-            coord = util.revert-transform(group-ctx.transform, coord)
-            (str(key): coord)
-          })
-          .join()
-      })
+//   let visu(elements) = {
+//     get-ctx(ctx => {
+//       // Process elements
+//       ctx.groups.push(())
+//       let (ctx: group-ctx, drawables, bounds) = process.many(ctx, util.resolve-body(ctx, elements))
 
-      let coords = pos.map(v => v.values()).join()
+//       // Calculate coordinates
+//       let children = group-ctx.groups.last()
 
-      // content((-5, -5), [
-      //   #{
-      //     coords
-      //   }
-      // ])
+//       let pos = children.map(child => {
+//         let anchor = group-ctx.nodes.at(child).anchors
+//         let keys = anchor(())
 
-      for coord in coords {
-        circle(coord, radius: .03, fill: red, stroke: red)
-      }
+//         keys
+//           .map(key => {
+//             let coord = anchor(key)
+//             coord = util.revert-transform(group-ctx.transform, coord)
+//             (str(key): coord)
+//           })
+//           .join()
+//       })
 
-      for p in pos {
-        let coords = p.values()
+//       let coords = pos.map(v => v.values()).join()
 
-        let minX = calc.min(..coords.map(v => v.at(0)))
-        let maxX = calc.max(..coords.map(v => v.at(0)))
+//       // content((-5, -5), [
+//       //   #{
+//       //     coords
+//       //   }
+//       // ])
 
-        let minY = calc.min(..coords.map(v => v.at(1)))
-        let maxY = calc.max(..coords.map(v => v.at(1)))
+//       for coord in coords {
+//         circle(coord, radius: .03, fill: red, stroke: red)
+//       }
 
-        let minZ = calc.min(..coords.map(v => v.at(2)))
-        let maxZ = calc.max(..coords.map(v => v.at(2)))
+//       for p in pos {
+//         let coords = p.values()
 
-        let topLeft = (minX, minY, minZ)
-        let bottomRight = (maxX, maxY, maxZ)
+//         let minX = calc.min(..coords.map(v => v.at(0)))
+//         let maxX = calc.max(..coords.map(v => v.at(0)))
 
+//         let minY = calc.min(..coords.map(v => v.at(1)))
+//         let maxY = calc.max(..coords.map(v => v.at(1)))
 
-        rect(topLeft, bottomRight, stroke: blue)
-      }
+//         let minZ = calc.min(..coords.map(v => v.at(2)))
+//         let maxZ = calc.max(..coords.map(v => v.at(2)))
 
-      let minX = calc.min(..coords.map(v => v.at(0)))
-      let maxX = calc.max(..coords.map(v => v.at(0)))
-
-      let minY = calc.min(..coords.map(v => v.at(1)))
-      let maxY = calc.max(..coords.map(v => v.at(1)))
-
-      let minZ = calc.min(..coords.map(v => v.at(2)))
-      let maxZ = calc.max(..coords.map(v => v.at(2)))
-
-      let topLeft = (minX, minY, minZ)
-      let bottomRight = (maxX, maxY, maxZ)
+//         let topLeft = (minX, minY, minZ)
+//         let bottomRight = (maxX, maxY, maxZ)
 
 
-      rect(topLeft, bottomRight, stroke: black)
-    })
-  }
+//         rect(topLeft, bottomRight, stroke: blue)
+//       }
 
-  let elements = {
-    line((1, 1), (2, 3), name: "line")
+//       let minX = calc.min(..coords.map(v => v.at(0)))
+//       let maxX = calc.max(..coords.map(v => v.at(0)))
 
-    content(
-      ("line.start", 50%, "line.end"),
-      angle: "line.end",
-      padding: .1,
-      anchor: "south",
-      [hi asd  asd asd asd],
-      name: "label",
-    )
+//       let minY = calc.min(..coords.map(v => v.at(1)))
+//       let maxY = calc.max(..coords.map(v => v.at(1)))
 
-    circle((2, 2), radius: 0.5, name: "hehe")
-  }
+//       let minZ = calc.min(..coords.map(v => v.at(2)))
+//       let maxZ = calc.max(..coords.map(v => v.at(2)))
 
-  elements
+//       let topLeft = (minX, minY, minZ)
+//       let bottomRight = (maxX, maxY, maxZ)
 
-  visu(elements)
-})
+
+//       rect(topLeft, bottomRight, stroke: black)
+//     })
+//   }
+
+//   let elements = {
+//     tree.tree(
+//       ("test", ("test", ("heh",)), ("hi",)),
+//       name: "asd"
+//     )
+//     line((1, 1), (2, 3), name: "line")
+
+//     content(
+//       ("line.start", 50%, "line.end"),
+//       angle: "line.end",
+//       padding: .1,
+//       anchor: "south",
+//       [hi asd  asd asd asd],
+//       name: "label",
+//     )
+
+//     circle((2, 2), radius: 0.5, name: "hehe")
+//   }
+
+//   elements
+
+//   visu(elements)
+// })
 
 // suffix tree for "babidibidi"
 // #experimental-tree[
