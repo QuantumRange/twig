@@ -51,17 +51,17 @@
     resolve-coordinate: (),
     shared-state: (:),
   )
-  
+
   cetz.canvas({
-  body
-})
+    body
+  })
 
   return process.many(ctx, util.resolve-body(ctx, body))
 }
 
 #let body-analyse(
   body,
-) = context {
+) = {
   // I don't see any nodes in ctx except when they have names, so this is my very normal solution
   let body = body
     .enumerate()
