@@ -51,15 +51,19 @@
     resolve-coordinate: (),
     shared-state: (:),
   )
+  
+  cetz.canvas({
+  body
+})
 
   return process.many(ctx, util.resolve-body(ctx, body))
 }
 
 #let body-analyse(
   body,
-) = {
+) = context {
   // I don't see any nodes in ctx except when they have names, so this is my very normal solution
-  body = body
+  let body = body
     .enumerate()
     .map(((idx, node)) => {
       element-modify(node, element => {
@@ -71,28 +75,25 @@
 
   let (ctx, drawables, bounds) = body-evaluate(body)
 
-  let nodes = ctx
+  ctx
     .nodes
     .values()
     .map(node => {
       let anchor = node.anchors
       let anchor-keys = anchor(())
+      let anchors = anchor-keys
+        .map(key => {
+          let coord = anchor(key)
+
+          coord = util.revert-transform(ctx.transform, coord)
+
+          (str(key): coord)
+        })
+        .join()
 
       (
         name: node.name,
-        anchors: anchor-keys
-          .map(key => {
-            let coord = anchor(key)
-
-            coord = util.revert-transform(ctx.transform, coord)
-
-            (str(key): coord)
-          })
-          .join(),
+        ..bb.calculate-bb(anchors),
       )
     })
-
-  nodes = nodes.map(node => node + (bb: bb.calculate-bb(node)))
-
-  nodes
 }

@@ -31,7 +31,11 @@
 /// - body (content): A list
 /// -> A dictionary
 
-#let list-to-tree(body) = {
+#let list-to-tree(body) = {tree-to-cetz(list-to-tree([
+    - root
+      - child 1
+      - child 2
+  ]))
   let helper(element) = {
     let node = if element.has("body") { element.body } else { element.description }
 
