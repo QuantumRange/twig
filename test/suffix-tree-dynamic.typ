@@ -15,8 +15,6 @@
   )
 
   circle((0, 0), radius: 1)
-  
-  content((), [test])
 }
 
 #let nodes = _cetz.body-analyse(body)
